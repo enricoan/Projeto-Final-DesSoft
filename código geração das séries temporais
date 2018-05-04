@@ -9,10 +9,13 @@ grafico= plt.figure()
 eixo_x= grafico.add_subplot(1,1,1)
 
 def animate(i):
-    valores_acoes= open('tesla teste.txt','r').read() #neste ponto, deve-se notar que os valores são importados das séries temporais já
-                                                      #prontas e encontradas na internet. após baixadas em arquivos .csv, elas são tratadas
-                                                      #para terem o formato ('dia na série temporal','valor da ação naquele dia') e poderem
-                                                      #ser plotadas como pares ordenados
+ #neste ponto, deve-se notar que os valores são importados das séries temporais já
+ #prontas e encontradas na internet. após baixadas em arquivos .csv, elas são tratadas
+ #para terem o formato ('dia na série temporal','valor da ação naquele dia') e poderem
+ #ser plotadas como pares ordenados
+ with open('teslateste.txt','r') as tesla: 
+    valores_acoes= tesla.read()
+    
     linhas= valores_acoes.split('\n')
     tempo=[]
     valores_acoes=[]
