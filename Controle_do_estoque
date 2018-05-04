@@ -23,20 +23,29 @@ for linha in linhas:
 saldo=150
 q=0 #quantidade inicial de ações
 
-#Contadores         
+#Contadores
+            
 j=0    
-
-for e in range(len(tempo)): #loop principal 
+for e in range(0, len(tempo)): #loop principal 
     carteira={'Tesla':{'quantidade':q, 'cotacao':cotacao[j]}}
     valor = cotacao[j]
-    print('A cotação atual é de: U${0}'.format(valor))
-    print('Seu saldo autal é de: U${0}'.format(saldo))
-    print('Você tem {0} disponíveis em sua carteira'.format(q))
-    opcao=input('Digite buy para comprar ou sell para vender: ')
+    print('\n A cotação atual é de: U${0} \n'.format(valor))
+    print('Seu saldo autal é de: U${0} \n'.format(saldo))
+    print('Você tem {0} disponíveis em sua carteira \n'.format(q))
+    opcao=input('Digite buy para comprar ou sell para vender (ou sair): ')
+    n=int(input('\n Digite a quantidade que deseja comprar ou vender:'))
     if opcao =='buy':
-        q+= 1
-        saldo-=valor
+        if saldo>cotacao[j]:
+            q+= n
+            saldo-=n*valor
+        else: 
+            print('Você não possui saldo suficiente para comprar essa ação \n')
     elif opcao =='sell':
-        q-= 1
-        saldo+=valor
+        if q>0:
+            q-= n
+            saldo+=n*valor
+        else:
+            print('Você não possui ações disponíveis para venda \n')
+    elif opcao=='sair':
+        break
     j+=1
