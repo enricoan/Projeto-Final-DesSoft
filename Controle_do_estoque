@@ -33,7 +33,11 @@ for e in range(0, len(tempo)): #loop principal
     print('Seu saldo autal é de: U${0} \n'.format(saldo))
     print('Você tem {0} disponíveis em sua carteira \n'.format(q))
     opcao=input('Digite buy para comprar ou sell para vender (ou sair): ')
+    if opcao=='sair':
+        break
+    
     n=int(input('\n Digite a quantidade que deseja comprar ou vender:'))
+    
     if opcao =='buy':
         if saldo>cotacao[j]:
             q+= n
@@ -45,7 +49,5 @@ for e in range(0, len(tempo)): #loop principal
             q-= n
             saldo+=n*valor
         else:
-            print('Você não possui ações disponíveis para venda \n')
-    elif opcao=='sair':
-        break
+            print('Você não possui ações disponíveis para venda \n') 
     j+=1
