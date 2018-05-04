@@ -19,24 +19,24 @@ for linha in linhas:
             tempo.append(int(x))
             cotacao.append(int(y))
 
-#Contadores
-i=0      
-j=0    
-while i < len(tempo): #loop principal 
-    #Parametros
-    q=0 #quantidade inicial de ações
-    saldo=150
-    carteira={'Tesla':{'quantidade':q, 'cotacao':cotacao[j]}}
-    valor_atual=int(carteira['Tesla']['cotacao'])
-    print('A cotação atual é de: U${0}'.format(valor_atual))
-    print('Seu saldo autal é de: U${0}'.format(saldo))
-    opcao=input('Digite buy para comprar ou sell para vender: ')
-    if opcao=='buy':
-        q+=1
-        saldo-=valor_atual
-    elif opcao=='sell':
-        q-=1
-        saldo+=valor_atual
-    i+=1
-    j+=1
+#Parametros iniciais
+saldo=150
+q=0 #quantidade inicial de ações
 
+#Contadores         
+j=0    
+
+for e in range(len(tempo)): #loop principal 
+    carteira={'Tesla':{'quantidade':q, 'cotacao':cotacao[j]}}
+    valor = cotacao[j]
+    print('A cotação atual é de: U${0}'.format(valor))
+    print('Seu saldo autal é de: U${0}'.format(saldo))
+    print('Você tem {0} disponíveis em sua carteira'.format(q))
+    opcao=input('Digite buy para comprar ou sell para vender: ')
+    if opcao =='buy':
+        q+= 1
+        saldo-=valor
+    elif opcao =='sell':
+        q-= 1
+        saldo+=valor
+    j+=1
