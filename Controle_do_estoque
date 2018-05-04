@@ -1,2 +1,42 @@
 # Dicionário 
 #{Empresa:{quantidade:int, cotacao:float}}
+
+#Abrindo arquivo e lendo os dados
+with open('teslateste.txt','r') as tesla:
+    serie= tesla.read()
+
+#Spliting o arquivo nos pontos onde há quebra de linha
+linhas= serie.split('\n')
+
+#Lista tempo e lista cotação
+
+tempo=[]
+cotacao=[]
+#Percorre a lista linhas e adiciona os elementos em sua devida lista
+for linha in linhas:
+       if len(linha)> 1:
+            x,y = linha.split(',')
+            tempo.append(int(x))
+            cotacao.append(int(y))
+
+#Contadores
+i=0      
+j=0    
+while i < len(tempo): #loop principal 
+    #Parametros
+    q=0 #quantidade inicial de ações
+    saldo=150
+    carteira={'Tesla':{'quantidade':q, 'cotacao':cotacao[j]}}
+    valor_atual=int(carteira['Tesla']['cotacao'])
+    print('A cotação atual é de: U${0}'.format(valor_atual))
+    print('Seu saldo autal é de: U${0}'.format(saldo))
+    opcao=input('Digite buy para comprar ou sell para vender: ')
+    if opcao=='buy':
+        q+=1
+        saldo-=valor_atual
+    elif opcao=='sell':
+        q-=1
+        saldo+=valor_atual
+    i+=1
+    j+=1
+
