@@ -53,8 +53,6 @@ class jogo(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
-        tk.Tk.iconbitmap(self, default="Milion.ico")
         tk.Tk.wm_title(self, "Million Run")
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -116,23 +114,34 @@ class Game(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Million RUN!", font=LARGE_FONT)
-        label.grid(pady=10,padx=10)
-        carteira_texto = "Microsoft,Facebook,Google,Apple"
-        button1 = ttk.Button(self, text="Voltar para HOME",
-                            command=lambda: controller.show_frame(MenuPage))
+        one = tk.Label(self, text="Million Run")
 
-        button1.grid()
-        botao_comprar = ttk.Button(self, text="Buy",
-                                   command=buy)
-        botao_comprar.grid()
-        botao_vender = ttk.Button(self, text="Sell",
-                                  command=sell)
-        botao_vender.grid()
-        carteira_objeto = tk.Label(self, text="Carteira:")
-        carteira_objeto.grid()
-        carteira = tk.Label(self, text=carteira_texto, font=SMALL_FONT)
-        carteira.grid()
+        one.place(x=1280 / 2, y=0)
+
+        carteira = tk.Label(self, text="Carteira", font=LARGE_FONT)
+
+        carteira.place(x=1100, y=100)
+
+        obtidos_texto = "Microsoft,\n Sony,\n LG"
+        obtidos = tk.Label(self, text=obtidos_texto, font=NORMAL_FONT)
+
+        obtidos.place(x=1100, y=150)
+
+        Selecione = tk.Label(self, text="Selecione a ação que deseja alterar", font=LARGE_FONT)
+        Selecione.place(x=50, y=100)
+        botao_comprar = tk.Button(self, text="Buy",
+                               command=buy)
+        botao_comprar.place(x=400, y=450)
+
+        botao_vender = tk.Button(self, text="Sell",
+                              command=sell)
+        botao_vender.place(x=400, y=500)
+
+        grafico = tk.Label(self, text="Grafico")
+        grafico.place(x=200, y=475)
+
+        total = tk.Label(self, text="Total: X REAIS", font=NORMAL_FONT)
+        total.place(x=1100, y=650)
 
 """"FIM JOGO [4]"""
 
