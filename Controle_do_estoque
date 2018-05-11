@@ -1,26 +1,10 @@
 # Dicionário 
 #{Empresa:{quantidade:int, cotacao:float}}
 
-def geradordeserie(nome_arquivo): #O nome precisa ser uma string
-    #Abrindo arquivo e lendo os dados
-    with open(nome_arquivo,'r') as empresa:
-        serie= empresa.read()
-    
-    #Spliting o arquivo nos pontos onde há quebra de linha
-    linhas= serie.split('\n')
-    
-    #Lista tempo e lista cotação
-    tempo=[]
-    cotacao=[]
-    #Percorre a lista linhas e adiciona os elementos em sua devida lista
-    for linha in linhas:
-       if len(linha)> 1:
-            x,y = linha.split(',')
-            tempo.append(int(x))
-            cotacao.append(int(y))
-    return tempo, cotacao
+#importando a série temporal 
+from funcoes import geradordeserie 
 
-tempo, cotacao = geradordeserie("teslateste.txt")
+tempo, cotacao = geradordeserie("teslateste.txt") #O único argumento é o nome do arquivo como string
 
 #Parametros iniciais
 saldo=150
