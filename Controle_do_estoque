@@ -1,23 +1,26 @@
 # Dicionário 
 #{Empresa:{quantidade:int, cotacao:float}}
 
-#Abrindo arquivo e lendo os dados
-with open('teslateste.txt','r') as tesla:
-    serie= tesla.read()
-
-#Spliting o arquivo nos pontos onde há quebra de linha
-linhas= serie.split('\n')
-
-#Lista tempo e lista cotação
-
-tempo=[]
-cotacao=[]
-#Percorre a lista linhas e adiciona os elementos em sua devida lista
-for linha in linhas:
+def geradordeserie(nome_arquivo): #O nome precisa ser uma string
+    #Abrindo arquivo e lendo os dados
+    with open(nome_arquivo,'r') as empresa:
+        serie= empresa.read()
+    
+    #Spliting o arquivo nos pontos onde há quebra de linha
+    linhas= serie.split('\n')
+    
+    #Lista tempo e lista cotação
+    tempo=[]
+    cotacao=[]
+    #Percorre a lista linhas e adiciona os elementos em sua devida lista
+    for linha in linhas:
        if len(linha)> 1:
             x,y = linha.split(',')
             tempo.append(int(x))
             cotacao.append(int(y))
+    return tempo, cotacao
+
+tempo, cotacao = geradordeserie("teslateste.txt")
 
 #Parametros iniciais
 saldo=150
