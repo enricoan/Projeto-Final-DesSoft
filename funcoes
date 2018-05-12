@@ -18,12 +18,14 @@ def geradordeserie(nome_arquivo): #O nome precisa ser uma string
             cotacao.append(int(y))
     return tempo, cotacao
 
+#Funções para compra e venda      
 #Função para compra de ações
+
 def buy(cliente, acao, preco, quantidade=100): #nome do cliente(string), acao(string), quantidade(int)(variavel opcional), e preco(float)
-    name=cliente
-    name.compra(acao, preco, quantidade)
+    cliente.compra(acao, preco, quantidade)
 
 #Função para venda de ações
+
 def sell(cliente, acao, preco, quantidade=100):
-    name=cliente
-    name.venda(acao, preco, quantidade)
+    cliente.venda(acao, preco, quantidade)
+
