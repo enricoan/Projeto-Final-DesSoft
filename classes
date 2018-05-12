@@ -12,14 +12,14 @@ class Clientes:
         #Ou seja, temos 400 ações da Tesla
         #saldo é o dinheiro disponível no banco para compra de ações, nesse caso 10k 
         
-    def compra (self, acao, quantidade, preco): #O metodo compra recebe de acao, quantidade e preco
+    def compra (self, acao, preco, quantidade): #O metodo compra recebe de acao, quantidade e preco
         self.saldo-=quantidade*preco #Uma quantidade do nosso dinheiro é removida
         if acao in self.carteira: #testamos se a acao já existe no dicionario
             self.carteira[acao]+=quantidade # se ela existir só adicionamos a quantidade à ação
         else: #se ela n existir colocamos ela lá e lhe atribuimos o valor quantidade
             self.carteira[acao]=quantidade
     
-    def venda(self, acao, quantidade, preco):
+    def venda(self, acao, preco, quantidade):
         self.saldo+=quantidade*preco
         if acao in self.carteira: 
             self.carteira[acao]-=quantidade
