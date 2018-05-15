@@ -179,9 +179,8 @@ class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e
         self.canvas._tkcanvas.pack(side=tk.LEFT)
         
     #escolhendo a empresa (ainda precisa virar uma def para generalizar)
-    nome_empresa= 'TSLA'    
-    def gera_series_temporais(nome_empresa):
-        with open('{0}.txt','r').format(nome_empresa) as arquivo:
+
+        with open('TSLA.txt','r') as arquivo:
             valorescsv = arquivo.read()
         linhas= valorescsv.split('\n')
         for linha in linhas:
