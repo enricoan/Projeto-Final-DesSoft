@@ -1,0 +1,18 @@
+Dificuldade:
+
+Fácil: O avanço temporal das ações depende do presionamento de um botão
+Médio: O avanço temporal ocorre em intervalos de 10 segundos
+Difícil: O avanço temporal ocorre em tempo real (Economista MODE ON)
+
+
+Gráficos:
+
+Mostram a variação do preço das ações de cada empresa em função do tempo
+
+
+Botões:
+
+Comprar: Comprar a ação no preço determinado pelo gráfico
+Vender: Vende a ação no preço determinado pelo gráfico
+
+Objetivo: Chegar no FAMIGERADO Milhão!
