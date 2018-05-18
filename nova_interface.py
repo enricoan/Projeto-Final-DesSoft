@@ -20,11 +20,19 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from classes import Clientes
 import funcoes as f
+from firebase import firebase
+
+
+firebase=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/', None)
+
+cliente=Clientes()
+cliente.carteira=carteiras['cliente']['carteira']
+cliente.saldo=carteiras['cliente']['saldo']
 
 #importar o key_press_handler
 #
 from matplotlib.backend_bases import key_press_handler
-cliente= Clientes()
+
 """"FIM BIBLIOTECA [*]"""
 
 """"FONTES PADRÃO E STYLE [0]"""
@@ -237,6 +245,10 @@ class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e
 #        button1 = tk.Button(self, text="Voltar",command=lambda: controller.show_frame(MenuPage))
 #        button1.pack()
 
+#Atualizando a carteira Online:
+
+carteiras={'carteiras':{'cliente':{'carteira':cliente.carteira, 'saldo':cliente.saldo}}}
+firebase.patch('https://projeto-final-dessoft.firebaseio.com/', carteiras)
 
 """CONFIGURAÇÕES APP [/]"""
 app = jogo()
