@@ -22,9 +22,10 @@ from classes import Clientes
 import funcoes as f
 from firebase import firebase
 
+#Criando o objeto 'cliente' e atribuindo-lhe dados disponíveis no firebase
 
 firebase=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/', None)
-
+carteiras= firebase.get('carteiras', None)
 cliente=Clientes()
 cliente.carteira=carteiras['cliente']['carteira']
 cliente.saldo=carteiras['cliente']['saldo']
