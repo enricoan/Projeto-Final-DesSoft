@@ -1,7 +1,7 @@
 #Função para gerar série temporal a partir de arquivo 
 def geradordeserie(nome_arquivo): #O nome precisa ser uma string
     #Abrindo arquivo e lendo os dados
-    with open(nome_arquivo,'r') as empresa:
+    with open(nome_arquivo +'.txt','r') as empresa:
         serie= empresa.read()
     
     #Spliting o arquivo nos pontos onde há quebra de linha
