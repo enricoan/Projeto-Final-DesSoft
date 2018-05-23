@@ -248,8 +248,8 @@ class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e
 
 #Atualizando a carteira Online:
 
-carteiras={'carteiras':{'cliente':{'carteira':cliente.carteira, 'saldo':cliente.saldo}}}
-firebase.patch('https://projeto-final-dessoft.firebaseio.com/', carteiras)
+#carteiras={'carteiras':{'cliente':{'carteira':cliente.carteira, 'saldo':cliente.saldo}}}
+#firebase.patch('https://projeto-final-dessoft.firebaseio.com/', carteiras)
 
 """CONFIGURAÇÕES APP [/]"""
 app = jogo()
