@@ -25,7 +25,7 @@ class Clientes: #Aqui definimos uma classe chamada posicao
         else: 
             self.posicao[acao]=quantidade
 
-    def alinha_preco(self, posicao):
+    def alinha_preco(self, posicao): #O metodo recebe a posicao em que o valor atual da acao está na lista e retorna um dicionário
             carteira=self.carteira
             carteira_lucro={}
             for empresa in carteira:
