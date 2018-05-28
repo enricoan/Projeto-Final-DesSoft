@@ -26,10 +26,12 @@ class Clientes: #Aqui definimos uma classe chamada posicao
             self.posicao[acao]=quantidade
 
     def alinha_preco(self, posicao):
-        carteira=self.carteira
-        carteira_cotacao={}
-        for empresa in carteira:
-            tempo,cotacao = geradordeserie(empresa)
-            carteira_cotacao[empresa]['cotacao']=cotacao[posicao]
-            carteira_cotacao[empresa]['quantidade']=carteira[empresa]
-        return carteira_cotacao            
+            carteira=self.carteira
+            carteira_lucro={}
+            for empresa in carteira:
+                quantidade=carteira.get(empresa)
+                carteira_lucro[empresa]={}
+                tempo,cotacao = f.geradordeserie(empresa)
+                carteira_lucro[empresa]['quantidade']=quantidade
+                carteira_lucro[empresa]['cotacao']=cotacao[posicao]
+            return carteira_lucro
