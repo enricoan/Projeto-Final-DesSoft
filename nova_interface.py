@@ -166,10 +166,10 @@ class Game(tk.Frame):
         carteira = tk.Label(self, text="Carteira", font=LARGE_FONT)
         carteira.place(x=1100, y=100)
         
-        comprar_button = tk.Button(self, text="Vender", command= lambda: f.buy(cliente,'tesla',valores_acoes[i], quantidade= 100))
+        comprar_button = tk.Button(self, text="Comprar", command= lambda: f.buy(cliente,'tesla',valores_acoes[i], quantidade= 100))
         comprar_button.place(x=400, y=450)
 
-        vender_button = tk.Button(self, text="Comprar", command= lambda: f.sell(cliente,'tesla',valores_acoes[i], quantidade= 100))
+        vender_button = tk.Button(self, text="Vender", command= lambda: f.sell(cliente,'tesla',valores_acoes[i], quantidade= 100))
         vender_button.place(x=400, y=500)
 
         grafico = tk.Label(self, text="Grafico")
@@ -288,10 +288,10 @@ class modo_médio(tk.Frame): #dificuldade na qual cada ponto é plotado eixos ca
         voltar = tk.Button(self, text="Voltar",command=lambda: controller.show_frame(Difficulty))
         voltar.pack()
         
-        comprar_button = tk.Button(self, text="Vender", command= lambda: f.buy(cliente,cb.get(),valores_acoes[i], quantidade= 100))
+        comprar_button = tk.Button(self, text="Comprar", command= lambda: f.buy(cliente,cb.get(),valores_acoes[i], quantidade= 100))
         comprar_button.place(x=500, y=90)
 
-        vender_button = tk.Button(self, text="Comprar", command= lambda: f.sell(cliente,cb.get,valores_acoes[i], quantidade= 100))
+        vender_button = tk.Button(self, text="Vender", command= lambda: f.sell(cliente,cb.get,valores_acoes[i], quantidade= 100))
         vender_button.place(x=550, y=90)
         
 #        fig = Figure(figsize=(5,4), dpi=100)
@@ -364,10 +364,10 @@ class modo_difícil(tk.Frame):#dificuldade na qual cada ponto é plotado eixos c
         voltar = tk.Button(self, text="Voltar",command=lambda: controller.show_frame(Difficulty))
         voltar.pack()
 
-        comprar_button = tk.Button(self, text="Vender", command= lambda: f.buy(cliente,'tesla',valores_acoes[i], quantidade= 100))
+        comprar_button = tk.Button(self, text="Comprar", command= lambda: f.buy(cliente,'tesla',valores_acoes[i], quantidade= 100))
         comprar_button.place(x=500, y=90)
 
-        vender_button = tk.Button(self, text="Comprar", command= lambda: f.sell(cliente,'tesla',valores_acoes[i], quantidade= 100))
+        vender_button = tk.Button(self, text="Vender", command= lambda: f.sell(cliente,'tesla',valores_acoes[i], quantidade= 100))
         vender_button.place(x=550, y=90)
 
 #carteiras={'carteiras':{'cliente':{'carteira':cliente.carteira, 'saldo':cliente.saldo}}}
