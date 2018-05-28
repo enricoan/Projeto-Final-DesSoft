@@ -14,8 +14,8 @@ def geradordeserie(nome_arquivo): #O nome precisa ser uma string
     for linha in linhas:
        if len(linha)> 1:
             x,y = linha.split(',')
-            tempo.append(int(x))
-            cotacao.append(int(y))
+            tempo.append(float(x))
+            cotacao.append(float(y))
     return tempo, cotacao
 
 #Funções para compra e venda      
