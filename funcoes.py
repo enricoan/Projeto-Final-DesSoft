@@ -29,9 +29,11 @@ def buy(cliente, acao, preco, quantidade=100): #nome do cliente(string), acao(st
 def sell(cliente, acao, preco, quantidade=100):
     cliente.venda(acao, preco, quantidade)
 
-def lucro(cliente, posicao, quantidade=100, saldo_inicial= 1E4):
-        carteira_lucro = cliente.alinha_preco(posicao)
+def lucro(cliente, posicao, saldo_inicial= 1E4):
+        carteira_lucro= cliente.alinha_preco(posicao)
         total=cliente.saldo
         for empresa in carteira_lucro:
-            total+=carteira_lucro['quantidade']*carteira_lucro['cotacao']
-        cliente.lucro = 100*(total- saldo_inicial)/saldo_inicial #lucro percentual
+            quantidade=carteira_lucro[empresa]['quantidade']
+            cotacao=carteira_lucro[empresa]['cotacao']
+            total+=quantidade*cotacao
+        cliente.lucro = 100*(total-saldo_inicial)/saldo_inicial #lucro percentual
