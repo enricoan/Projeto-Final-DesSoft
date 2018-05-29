@@ -1,3 +1,4 @@
+from firebase import firebase
 #Função para gerar série temporal a partir de arquivo 
 def geradordeserie(nome_arquivo): #O nome precisa ser uma string
     #Abrindo arquivo e lendo os dados
