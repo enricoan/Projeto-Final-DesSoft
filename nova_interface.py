@@ -19,23 +19,12 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from classes import Clientes
 import funcoes as f
-#from firebase import firebase
+from firebase import firebase
 import time
 #importar o key_press_handler
 from matplotlib.backend_bases import key_press_handler
 
 """"FIM BIBLIOTECA [*]"""
-
-""""FireBase[/*\]"""
-#Criando o objeto 'cliente' e atribuindo-lhe dados disponíveis no firebase
-
-#firebase=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/', None)
-#carteiras= firebase.get('carteiras', None)
-#cliente=Clientes()
-#cliente.carteira=carteiras['cliente']['carteira']
-#cliente.saldo=carteiras['cliente']['saldo']
-
-""""FIM FireBase[/*\]"""
 
 #importar o key_press_handler
 from matplotlib.backend_bases import key_press_handler
@@ -48,7 +37,8 @@ NORMAL_FONT = ("Verdana", 10)
 SMALL_FONT = ("Verdana", 8)
 style.use("ggplot")
 """"FIM FONTES PADRÃO E STYLE [0]"""
-
+'''Firebase'''
+firebase=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/carteiras/cliente_facil/', None)
 
 """"FUNÇÕES UNIVERSAIS [1]"""
 #PopUp Instruções
@@ -183,6 +173,22 @@ class Game(tk.Frame):
 tempo = []
 valores_acoes=[] 
 i=0
+
+
+#Pegando os dados da nuvem e atribuindo-os a variaveis
+
+""""FireBase[/*\]"""
+
+carteira_facil=firebase.get('carteira_facil',None)
+saldo_facil=firebase.get('saldo_facil',None)
+posicao_facil=firebase.get('posicao_facil', None)
+
+""""FIM FireBase[/*\]"""
+#Criando uma instancia da classe cliente para manipular os dados do modo fácil e atribuindo os valores da nuvem a ele
+cliente_facil=Clientes()
+cliente_facil.saldo=saldo_facil
+cliente_facil.carteira=carteira_facil
+
 class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e o valor da ação é plotado
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -205,10 +211,10 @@ class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e
         cb.bind('<<ComboboxSelected>>', on_select)
         print("Passou por aqui")
 
-        comprar_button = tk.Button(self, text="Vender", command= lambda: f.buy(cliente,self.cb.get(),float(valores_acoes[i]), quantidade= 100))
+        comprar_button = tk.Button(self, text="Vender", command= lambda: f.buy(cliente_facil,self.cb.get(),float(valores_acoes[i]), quantidade= 100))
         comprar_button.place(x=500, y=90)
 
-        vender_button = tk.Button(self, text="Comprar", command= lambda: f.sell(cliente,self.cb.get(),float(valores_acoes[i]), quantidade= 100))
+        vender_button = tk.Button(self, text="Comprar", command= lambda: f.sell(cliente_facil,self.cb.get(),float(valores_acoes[i]), quantidade= 100))
         vender_button.place(x=550, y=90)
         
 
