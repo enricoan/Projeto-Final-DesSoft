@@ -63,7 +63,7 @@ def on_select(event=None):
 
 """"CONFIGURAÇÕES TKINTER [2]"""
 
-class jogo(tk.Tk) #Default config para todas as paginas:
+class jogo(tk.Tk): #Default config para todas as paginas:
     def __init__(self, *args, **kwargs):
         #Inicializador Tk.Tk(window)
         tk.Tk.__init__(self, *args, **kwargs)
