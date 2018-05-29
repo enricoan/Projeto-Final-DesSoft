@@ -37,3 +37,9 @@ def lucro(cliente, posicao, saldo_inicial= 1E4):
             cotacao=carteira_lucro[empresa]['cotacao']
             total+=quantidade*cotacao
         cliente.lucro = 100*(total-saldo_inicial)/saldo_inicial #lucro percentual
+        
+        
+def save_game(instancia, modo): #instancia é o objeto da classe Clientes, modo é fácil, medio ou dificil
+    if modo=='facil':
+        cliente={'cliente_facil':{'carteira_facil':instancia.carteira, 'posicao_facil':instancia.posicao, 'saldo_facil':instancia.saldo}}
+        firebase.patch('https://projeto-final-dessoft.firebaseio.com/carteiras', cliente )
