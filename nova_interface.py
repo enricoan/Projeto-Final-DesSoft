@@ -177,18 +177,9 @@ i=0
 
 #Pegando os dados da nuvem e atribuindo-os a variaveis
 
-""""FireBase[/*\]"""
-
-carteira_facil=firebase.get('carteira_facil',None)
-saldo_facil=firebase.get('saldo_facil',None)
-posicao_facil=firebase.get('posicao_facil', None)
-
 """"FIM FireBase[/*\]"""
 #Criando uma instancia da classe cliente para manipular os dados do modo fácil e atribuindo os valores da nuvem a ele
 cliente_facil=Clientes()
-cliente_facil.saldo=saldo_facil
-cliente_facil.carteira=carteira_facil
-
 class modo_facil(tk.Frame): #modo do jogo no qual eixos pessoa clica no botão e o valor da ação é plotado
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
