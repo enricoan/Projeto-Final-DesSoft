@@ -4,7 +4,7 @@ Created on Sat May 12 12:04:42 2018
 
 @author: Jadson
 """
-class Clientes: #Aqui definimos uma classe chamada posicao
+class Cliente: #Aqui definimos uma classe chamada posicao
     def __init__(self):
         self.carteira={} 
         self.saldo=1E4
