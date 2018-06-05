@@ -30,6 +30,9 @@ from matplotlib.backend_bases import key_press_handler
 
 """"FIM BIBLIOTECA [*]"""
 
+
+cliente=Cliente()
+
 """"FONTES PADRÃO E STYLE [0]"""
 LARGE_FONT = ("Verdana", 12)
 NORMAL_FONT = ("Verdana", 10)
@@ -134,7 +137,6 @@ class TelaInicial(object):
         
 """FIM DIFICULDADE [4]"""
 
-cliente_facil=Cliente()
 class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botão e o valor da ação é plotado
 
     def __init__(self, parent, manual = True):
@@ -166,12 +168,12 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
             plotador.place(x=950, y=30)
        
         botao_comprar = tk.Button(self, text="Comprar", \
-                                command= lambda: broker.buy(cliente_facil,'AAPL',\
+                                command= lambda: broker.buy(cliente,'AAPL',\
                                 float(self.valores_acoes[self.idx]), self.linkedValue, quantidade= 100))
         botao_comprar.place(x=500, y=90)
 
         botao_vender = tk.Button(self, text="Vender", \
-                                 command= lambda: broker.sell(cliente_facil,'AAPL',float \
+                                 command= lambda: broker.sell(cliente,'AAPL',float \
                                 (self.valores_acoes[self.idx]), self.linkedValue, quantidade= 100))
         botao_vender.place(x=550, y=90)
         
@@ -266,7 +268,7 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         label_alteravel= tk.Label(self, text= 'O preço da ação hoje é: U$ {0}'.format(valor_em_y), font=LARGE_FONT)
         label_alteravel.place(x=0,y=500)
         
-        money_cliente= tk.Label(self, text= 'Seu saldo atual é de: {0}'.format(cliente_facil.saldo), font=LARGE_FONT)
+        money_cliente= tk.Label(self, text= 'Seu saldo atual é de: {0}'.format(cliente.saldo), font=LARGE_FONT)
         money_cliente.place(x=0,y=600)
         self.idx += 1
 
@@ -341,9 +343,8 @@ class Jogo(object):
 
         subMenu = tk.Menu(menu)
         menu.add_cascade(label='Jogo', menu=subMenu)
-        subMenu.add_command(label="Salvar Jogo", command=  lambda: broker.popupsalvamento())
-        subMenu.add_command(label="Carregar Jogo", command = lambda: broker.popucarregamento())
-
+        subMenu.add_command(label="Salvar Jogo", command=  lambda: broker.popupsalvamento(cliente))
+        subMenu.add_command(label="Carregar Jogo", command = lambda: broker.popucarregamento(cliente))
 
         instrucoesMenu = tk.Menu(menu)
         menu.add_cascade(label='Instruções', menu=instrucoesMenu)
