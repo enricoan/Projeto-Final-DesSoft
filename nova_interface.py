@@ -53,8 +53,6 @@ def instrucoes_popup():
 """"FIM DEFINIÇÃO FUNÇÕES UNIVERSAIS [1]"""
 
 
-
-
 """DIFICULDADE [4]""" #página inicial do jogo: abre uma label grande com todas as instruções e botões 
                       #com os nomes das dificuldades
 class TelaInicial(object):
@@ -151,7 +149,7 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         self.cliente =  Cliente() 
         self.iniciarView(manual)
         self.nome = "FACIL"
-        
+        self.selecionada='AAPL'
     def iniciarView(self, manual = True):
        
         #labels da página
@@ -168,14 +166,14 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
             plotador.place(x=950, y=30)
        
         botao_comprar = tk.Button(self, text="Comprar", \
-                                command= lambda: broker.buy(cliente,'AAPL',\
+                                command= lambda: broker.buy(cliente,self.selecionada,\
                                 float(self.valores_acoes[self.idx]), self.linkedValue, quantidade= 100))
         botao_comprar.place(x=500, y=90)
 
         botao_vender = tk.Button(self, text="Vender", \
-                                 command= lambda: broker.sell(cliente,'AAPL',float \
+                                 command= lambda: broker.sell(cliente,self.selecionada,float \
                                 (self.valores_acoes[self.idx]), self.linkedValue, quantidade= 100))
-        botao_vender.place(x=550, y=90)
+        botao_vender.place(x=580, y=90)
         
 
         progresso= ttk.Progressbar(self, orient=tk.HORIZONTAL, length=420, mode="determinate", maximum=1E6, variable = self.linkedValue)
@@ -238,6 +236,7 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         selection = widget.curselection()
         picked = widget.get(selection[0])
         self.tempo, self.valores_acoes = broker.geradordeserie(picked)
+        self.selecionada=picked
         self.idx = 0
         self.carregado = True
 
