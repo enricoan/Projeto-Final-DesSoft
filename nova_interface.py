@@ -341,8 +341,9 @@ class Jogo(object):
 
         subMenu = tk.Menu(menu)
         menu.add_cascade(label='Jogo', menu=subMenu)
-        subMenu.add_command(label="Salvar Jogo")
-        subMenu.add_command(label="Carregar Jogo")
+        subMenu.add_command(label="Salvar Jogo", command=  lambda: broker.popupsalvamento())
+        subMenu.add_command(label="Carregar Jogo", command = lambda: broker.popucarregamento())
+
 
         instrucoesMenu = tk.Menu(menu)
         menu.add_cascade(label='Instruções', menu=instrucoesMenu)
