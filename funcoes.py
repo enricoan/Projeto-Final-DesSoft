@@ -99,3 +99,14 @@ def popucarregamento(instancia):
     B2 = ttk.Button(popup, text="Não", command = popup.destroy)
     B2.pack()
     popup.mainloop()
+    
+    
+#função que carrega consigo o texto das instruções do jogo
+def instrucoes_popup():
+    popup =tk.Tk()
+    popup.wm_title("Instruções")
+    with open('txts/' + 'Instrucoes.txt', 'r') as qpt3:
+        dificuldade = qpt3.read()
+    instrucao_label = tk.Label(popup, text=dificuldade)
+    instrucao_label.pack()
+    popup.mainloop()
