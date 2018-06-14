@@ -41,6 +41,17 @@ class Cliente:
                 self.carteira[acao] -= quantidade
             else: 
                 self.carteira[acao] = quantidade
+                
+    def alinha_preco(self, posicao): #metodo que cria um dicionario com os valores da carteira no momento
+        carteira=self.carteira
+        carteira_lucro={}
+        for empresa in carteira:
+            quantidade=carteira.get(empresa)
+            carteira_lucro[empresa]={}
+            tempo,cotacao = f.geradordeserie(empresa)
+            carteira_lucro[empresa]['quantidade']=quantidade
+            carteira_lucro[empresa]['cotacao']=cotacao[posicao]
+        return carteira_lucro                  
             
 class Graficos:
     def __init__(self):
