@@ -51,6 +51,17 @@ def save_game(instancia): #instancia é o objeto da classe Clientes, modo é fá
         cliente={'cliente':{'carteira':instancia.carteira, 'posicao':instancia.posicao, 'saldo':instancia.saldo}}
         firebase3.patch('https://projeto-final-dessoft.firebaseio.com/carteiras', cliente )
 
+
+#função que calcula o lucro
+def lucro(cliente, posicao, saldo_inicial= 1E5):
+        carteira_lucro= cliente.alinha_preco(posicao)
+        total=cliente.saldo
+        for empresa in carteira_lucro:
+            quantidade=carteira_lucro[empresa]['quantidade']
+            cotacao=carteira_lucro[empresa]['cotacao']
+            total+=quantidade*cotacao
+        cliente.lucro = 100*(total-saldo_inicial)/saldo_inicial #lucro percentual      
+        
 #Função que nos ajuda a mostrar o portifolio
 def mostracarteira(instancia):
     carteira=''
