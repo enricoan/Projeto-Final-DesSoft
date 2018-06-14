@@ -21,17 +21,7 @@ import classes as c
 from modo_facil import modo_facil
 
 import funcoes as f
-#from firebase import firebase
 import time
-#Criando o objeto 'cliente' e atribuindo-lhe dados disponíveis no firebase
-
-#firebase=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/', None)
-#carteiras= firebase.get('carteiras', None)
-#cliente=Clientes()
-#cliente.carteira=carteiras['cliente']['carteira']
-#cliente.saldo=carteiras['cliente']['saldo']
-
-
 
 #importar o key_press_handler
 from matplotlib.backend_bases import key_press_handler
@@ -222,10 +212,6 @@ class modo_dificil(tk.Frame):#dificuldade na qual cada ponto é plotado eixos ca
 
         tempo,valores_acoes= f.geradordeserie('TSLA')
         
-        
-#carteiras={'carteiras':{'cliente':{'carteira':cliente.carteira, 'saldo':cliente.saldo}}}
-#firebase.patch('https://projeto-final-dessoft.firebaseio.com/', carteiras)
-
 """CONFIGURAÇÕES APP [/]"""
 app = jogo()
 app.geometry("1220x720")
