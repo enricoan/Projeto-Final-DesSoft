@@ -267,6 +267,9 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         
         carteira_label= tk.Label(self, text='Seu carteira possui: Ação | Quantidade \n {0}'.format(broker.mostracarteira(cliente)), font=LARGE_FONT)
         carteira_label.place(x=950, y=200)
+                
+        lucro_label= tk.Label(self, text='Seu lucro percentual atual é: {0}'.format(broker.mostralucro(cliente, self.idx)), font=LARGE_FONT)
+        lucro_label.place(x=0, y=650)
         
         self.idx += 1
 '''FIM FACIL'''
