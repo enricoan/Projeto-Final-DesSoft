@@ -15,7 +15,6 @@ import funcoes as broker
 from tkinter import *
 from threading import Timer
 from InfiniteTimer import InfiniteTimer
-from firebase import firebase
 import time
 
 #importar o key_press_handler
@@ -23,6 +22,7 @@ from matplotlib.backend_bases import key_press_handler
 
 """"FIM BIBLIOTECAS [*]"""
 cliente=Cliente()
+carteira_cliente= broker.mostracarteira(cliente)
 
 """"FONTES PADRÃO E STYLE [0]"""
 LARGE_FONT = ("Verdana", 12)
@@ -179,8 +179,8 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         label_empresa= tk.Label(self, text= 'Escolha a empresa na qual quer investir', font= LARGE_FONT)
         label_empresa.place(x=0,y=0)
         
-        label_carteira = tk.Label(self, text='{0}'.format(cliente.carteira), font=NORMAL_FONT)
-        label_carteira.place(x=50,y=50)
+        
+
         
         #lista com as empresas que podem ser escolhidas pelo usuário
         self.scrollbar = tk.Scrollbar(self)
@@ -262,12 +262,12 @@ class modo_facil(tk.Toplevel): #modo do jogo no qual eixos pessoa clica no botã
         label_alteravel= tk.Label(self, text= 'O preço da ação hoje é: U$ {0}'.format(valor_em_y), font=LARGE_FONT)
         label_alteravel.place(x=0,y=500)
         
-        money_cliente= tk.Label(self, text= 'Seu saldo atual é de: {0}'.format(cliente.saldo), font=LARGE_FONT)
+        money_cliente= tk.Label(self, text= 'Seu saldo atual é de: U$ {0}'.format(cliente.saldo), font=LARGE_FONT)
         money_cliente.place(x=0,y=600)
         
         carteira_label= tk.Label(self, text='Seu carteira possui: Ação | Quantidade \n {0}'.format(broker.mostracarteira(cliente)), font=LARGE_FONT)
         carteira_label.place(x=950, y=200)
-                
+        
         lucro_label= tk.Label(self, text='Seu lucro percentual atual é: {0}'.format(broker.mostralucro(cliente, self.idx)), font=LARGE_FONT)
         lucro_label.place(x=0, y=650)
         
