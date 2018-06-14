@@ -72,7 +72,6 @@ class jogo(tk.Tk):
         instrucoesMenu.add_command(label="Guia para Iniciantes", command=instrucoes_popup)
 
         self.frames = {}
-        # que poha é essa aqui?
         for F in (Difficulty, Game, modo_facil, modo_medio, modo_dificil):
             frame = F(container, self)
             self.frames[F] = frame
@@ -167,11 +166,8 @@ class Game(tk.Frame):
 tempo= []
 valores_acoes=[]
 i=0
-#easymode= modo_facil(parent,controller)
  
 '''DIFICULDADE ALTA'''   
-
-# que poha é essa aqui? que poha é tk.Frame?
   
 class modo_dificil(tk.Frame):#dificuldade na qual cada ponto é plotado eixos cada 5 segundos, sendo este o
                              #tempo para tomar eixos decisão de compra ou venda
