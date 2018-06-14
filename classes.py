@@ -16,7 +16,7 @@ class Cliente:
     def __init__(self):
         self.carteira={} 
         self.saldo=1E5
-        self.posicao=0
+        self.lucro=0
         #Essa classe possui dois atributos: carteira, um dicionário; e saldo, um float.
         #carteira é o dicionário estruturado em {acao:quantidade}, ex: {'Tesla':400}
         #Ou seja, temos 400 ações da Tesla
