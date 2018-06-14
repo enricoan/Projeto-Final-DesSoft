@@ -44,11 +44,10 @@ def retrieve_game(instancia): #pega os dados disponiveis na nuvem e atribui ao o
         posicao_online=firebase1.get('posicao', None)
         instancia.carteira=carteira_online
         instancia.saldo=saldo_online
-        instancia.posicao=posicao_online
     
 def save_game(instancia): #instancia é o objeto da classe Clientes, modo é fácil, medio ou dificil
         firebase3=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/carteiras/cliente/', None)   
-        cliente={'cliente':{'carteira':instancia.carteira, 'posicao':instancia.posicao, 'saldo':instancia.saldo}}
+        cliente={'cliente':{'carteira':instancia.carteira, 'saldo':instancia.saldo}}
         firebase3.patch('https://projeto-final-dessoft.firebaseio.com/carteiras', cliente )
 
 
