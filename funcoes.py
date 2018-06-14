@@ -41,7 +41,6 @@ def retrieve_game(instancia): #pega os dados disponiveis na nuvem e atribui ao o
         firebase1=firebase.FirebaseApplication('https://projeto-final-dessoft.firebaseio.com/carteiras/cliente/', None)
         carteira_online=firebase1.get('carteira',None)
         saldo_online=firebase1.get('saldo',None)
-        posicao_online=firebase1.get('posicao', None)
         instancia.carteira=carteira_online
         instancia.saldo=saldo_online
     
