@@ -52,7 +52,8 @@ class Cliente:
             carteira_lucro[empresa]['quantidade']=quantidade
             carteira_lucro[empresa]['cotacao']=cotacao[posicao]
         return carteira_lucro                  
-            
+
+
 class Graficos:
     def __init__(self):
         self.tempo=[]
