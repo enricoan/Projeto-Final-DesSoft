@@ -5,7 +5,7 @@ import random
 import os
 
 #PATH das empresas
-path = 'C:/Users/DiamonD/PycharmProjects/ep/Bolsas Tecnologia'
+path = 'C:/Users/DiamonD/PycharmProjects/ep/Bolsas Bem de Consumo'
 diretorio = os.listdir(path)
 
 """Números da Sorte[0]"""
@@ -30,55 +30,66 @@ for e in range(len(diretorio)):
 
 """"Gerador de graficos [1]"""
 
-def gerador_acoes(multiplicador_sorte, somador_sorte, divisor_sorte):
+def gerador_acoes(valor_inicial, soma_escala, escala_inicial):
     time = np.arange(0, 20, 20/1259)
     graph = []
     acao = []
 
     # Amplitude do valor das ações
-    amplitude = (np.cos(time) * multiplicador_sorte + somador_sorte) / divisor_sorte
+    amplitude = np.cos(time) + valor_inicial
+    scale = escala_inicial
 
     # Adicionar variação a amplitude
-    for e in amplitude:
-        rvs = scipy.stats.norm.rvs(loc=0, scale=2)
-        graph.append(e + rvs)
-    #Adicionar a variavel acao no formato de lista: Tempo Valor_Ação
+    for i in range(1259):
+        graph.append(abs(amplitude[i] + scipy.stats.norm.rvs(loc=0, scale=scale)))
+        scale += soma_escala
+    # Adicionar a variavel acao no formato de lista: Tempo Valor_Ação
     for e in range(len(time)):
-        acao.append('{0} {1}'.format(e, graph[e]))
+        acao.append('{0}, {1}'.format(e, graph[e]))
 
     # Formatacao para adicionar aos arquivos
     acao_string = '\n'.join(acao)
 
     #Retornar acao formatada
     return acao_string
-
+# acao = np.cos(t) + 80
+# scale=0.3
+# graph = []
+# for i in range(1259):
+#     graph.append(abs(acao[i] + scipy.stats.norm.rvs(loc=0, scale=scale)))
+#     scale += 0.01
 """"FIM Gerador de graficos [1]"""
 
 
 """"Gerador txt [2]"""
-
+# 20 a 50 fraco
+# 51 a 120 medio
+# 121 a 160 bom
 for e in range(len(sorte_alta)):
-    multiplicador_sorte = random.randint(40, 60)
-    somador_sorte = random.randint(240, 600)
-    divisor_sorte = random.randint(3, 4)
-    gerador = gerador_acoes(multiplicador_sorte, somador_sorte, divisor_sorte)
+    #sorte alta
+    valor_inicial = random.randint(121, 180)
+    soma_escala = random.uniform(0.0009, 0.002)
+    escala_inicial = random.uniform(0.9, 1)
+    gerador = gerador_acoes(valor_inicial, soma_escala, escala_inicial)
 
     with open('{0}/{1}'.format(path, diretorio[e]), 'w') as saida:
         saida.write(gerador)
 
 for e in range(len(sorte_alta), len(sorte_alta)+len(sorte_media)):
-    multiplicador_sorte = random.randint(60, 70)
-    somador_sorte = random.randint(240, 326)
-    divisor_sorte = random.randint(4, 6)
-    gerador = gerador_acoes(multiplicador_sorte, somador_sorte, divisor_sorte)
+    #sorte media
+    valor_inicial = random.randint(51, 120)
+    soma_escala = random.uniform(0.001,0.006)
+    escala_inicial = random.uniform(1.6, 2)
+    gerador = gerador_acoes(valor_inicial, soma_escala, escala_inicial)
 
     with open('{0}/{1}'.format(path, diretorio[e]), 'w') as saida:
         saida.write(gerador)
 for e in range(len(sorte_alta)+len(sorte_media), len(sorte_alta)+len(sorte_media)+len(sorte_baixa)):
-    multiplicador_sorte = random.randint(20, 40)
-    somador_sorte = random.randint(100, 254)
-    divisor_sorte = 6
-    gerador = gerador_acoes(multiplicador_sorte, somador_sorte, divisor_sorte)
+    #sorte baixa
+    valor_inicial = random.randint(20, 50)
+    soma_escala = random.uniform(0.0008, 0.0001)
+    escala_inicial = random.uniform(0.4, 1.6)
+    gerador = gerador_acoes(valor_inicial, soma_escala, escala_inicial)
 
     with open('{0}/{1}'.format(path, diretorio[e]), 'w') as saida:
         saida.write(gerador)
