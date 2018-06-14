@@ -51,6 +51,15 @@ def save_game(instancia): #instancia é o objeto da classe Clientes, modo é fá
         cliente={'cliente':{'carteira':instancia.carteira, 'posicao':instancia.posicao, 'saldo':instancia.saldo}}
         firebase3.patch('https://projeto-final-dessoft.firebaseio.com/carteiras', cliente )
 
+#Função que nos ajuda a mostrar o portifolio
+def mostracarteira(instancia):
+    carteira=''
+    for k,v in instancia.carteira.items():
+        carteira+='{0} | {1} \n'.format(k, v)
+    return carteira
+
+        
+
 #Função que chama um pop-up de alerta para o usuário
     
 LARGE_FONT= ("Verdana", 12)
