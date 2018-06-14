@@ -58,16 +58,11 @@ def mostracarteira(instancia):
         carteira+='{0} | {1} \n'.format(k, v)
     return carteira
 
-        
-
 #Função que chama um pop-up de alerta para o usuário
     
 LARGE_FONT= ("Verdana", 12)
 NORM_FONT = ("Helvetica", 10)
 SMALL_FONT = ("Helvetica", 8)
-
-def printando():
-    print('Tudo belê')
 
 def popupmsg(msg):
     popup = tk.Tk()
