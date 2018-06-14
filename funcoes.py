@@ -58,8 +58,9 @@ def lucro(cliente, posicao, saldo_inicial= 1E5):
             quantidade=carteira_lucro[empresa]['quantidade']
             cotacao=carteira_lucro[empresa]['cotacao']
             total+=quantidade*cotacao
-        cliente.lucro = 100*(total-saldo_inicial)/saldo_inicial #lucro percentual      
-        
+        cliente.lucro = 100*(total-saldo_inicial)/saldo_inicial #lucro percentual
+
+
 #Função que nos ajuda a mostrar o portifolio
 def mostracarteira(instancia):
     carteira=''
@@ -67,11 +68,17 @@ def mostracarteira(instancia):
         carteira+='{0} | {1} \n'.format(k, v)
     return carteira
 
+
+def mostralucro(instancia, posicao):
+    lucro(instancia,posicao)
+    return instancia.lucro
+    
 #Função que chama um pop-up de alerta para o usuário
     
 LARGE_FONT= ("Verdana", 12)
 NORM_FONT = ("Helvetica", 10)
 SMALL_FONT = ("Helvetica", 8)
+
 
 def popupmsg(msg):
     popup = tk.Tk()
@@ -112,14 +119,4 @@ def popucarregamento(instancia):
     B2 = ttk.Button(popup, text="Não", command = popup.destroy)
     B2.pack()
     popup.mainloop()
-    
-    
-#função que carrega consigo o texto das instruções do jogo
-def instrucoes_popup():
-    popup =tk.Tk()
-    popup.wm_title("Instruções")
-    with open('txts/' + 'Instrucoes.txt', 'r') as qpt3:
-        dificuldade = qpt3.read()
-    instrucao_label = tk.Label(popup, text=dificuldade)
-    instrucao_label.pack()
-    popup.mainloop()
+ 
